@@ -1,0 +1,85 @@
+﻿@page
+@model GestionStock.Pages.Clients.CreateModel
+@{
+    ViewData["Title"] = "Ajouter un Nouveau Client";
+}
+
+<div class="container mt-4">
+    <h2>➕ Ajouter un Nouveau Client</h2>
+    <hr />
+
+    <!-- Message d'erreur -->
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>@Model.ErrorMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Message de succès -->
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@Model.SuccessMessage</strong>
+            <p>Redirection en cours...</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Formulaire -->
+    <form method="post">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Nom <span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="nom"
+                       value="@Model.ClientInfo.nom" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Prénom <span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="prenom"
+                       value="@Model.ClientInfo.prenom" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" name="email"
+                       value="@Model.ClientInfo.email" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Téléphone</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="telephone"
+                       value="@Model.ClientInfo.telephone">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Adresse</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="adresse"
+                       value="@Model.ClientInfo.adresse">
+            </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="row mb-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i> Ajouter
+                </button>
+                <a href="/Clients/Clients" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Annuler
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
